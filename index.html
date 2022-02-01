@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app" class="container">
+
+        <h1>{{titulo}}</h1>
+        <h2>
+            Mi saldo diponible es: {{ cantidad }}
+        </h2>
+        <a v-bind:href="enlace">ir al enlace</a>
+
+        <hr>
+
+        <h2 v-if="estado">Cuenta Activa</h2>
+        <h2 v-else>Cuenta Desactivada</h2>
+
+        <hr>
+
+        <h2 v-if="cantidad > 500">Cantidad: {{cantidad}}</h2>
+        <h2 v-else-if="cantidad <= 500 && cantidad > 0">
+            Cantidad:
+            <span style="color:red">{{cantidad}}</span>
+        </h2>
+        <h2 v-else>Sin Cantidad {{cantidad}}</h2>
+
+        <hr>
+
+        <h2>Mis servicios disponibles:</h2>
+        <ul>
+            <li v-for="(item, index) in servicios">{{item}}<span @click="deleteServices(index)">X</span></li>
+        </ul>
+        <div class="text-center">
+            <button v-on:click="agregarSaldo">Agregar Saldo</button>
+            <button @click="disminuirSaldo" :disabled="desactivar" style="margin-left:10px">Disminuir Saldo</button>
+        </div>
+    </div>
+
+
+    <script src="main.js"></script>
+    <script>
+        const mountedApp = app.mount('#app');
+    </script>
+</body>

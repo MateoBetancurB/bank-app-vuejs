@@ -15,7 +15,7 @@
     <div id="app" class="container">
 
         <h1>{{titulo}}</h1>
-        <h2>
+        <h2 class="bg-dark" :class="colorCantidad">
             Mi saldo diponible es: {{ cantidad }}
         </h2>
         <a v-bind:href="enlace">ir al enlace</a>
@@ -44,10 +44,14 @@
             <button v-on:click="agregarSaldo">Agregar Saldo</button>
             <button @click="disminuirSaldo" :disabled="desactivar" style="margin-left:10px">Disminuir Saldo</button>
         </div>
+        <!-- <footer-banco></footer-banco> -->
+        <footer-banco cantidad="700" fecha="febrero 07" />
+
     </div>
 
 
     <script src="main.js"></script>
+    <script src="/components/Footer.js"></script>
     <script>
         const mountedApp = app.mount('#app');
     </script>
